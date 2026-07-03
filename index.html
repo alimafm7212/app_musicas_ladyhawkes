@@ -561,16 +561,24 @@ var GENERATORS = [
     memberInject:true,
     system:
 "You generate a complete scene script for a music video clip by The Ladyhawkes, formatted for Google Flow's Cenas tab.\n\n"+
-"FLOW FORMAT — CRITICAL:\n"+
-"- DIFFERENT image and video texts → TWO lines with the SAME {Cena N}:\n"+
-"    {Cena N} (i) [image: subject + pose + setting + light + STYLE SUFFIX]\n"+
-"    {Cena N} (v) [video: camera movement + subject movement ONLY — no style suffix — add (6s) or (8s)]\n"+
-"- SAME text for both → ONE line: {Cena N} (iv) [prompt + STYLE SUFFIX]\n"+
-"- Image only → {Cena N} (i) [prompt + STYLE SUFFIX]\n"+
-"- {Cena N} fixes the number; next cena auto-increments.\n"+
-"- References [Roxy] [Valerie] [Jade] [Nikki]: Flow replaces with saved portrait. Give ACTIONS only — never re-describe appearance. Max 3 refs per line.\n"+
-"- IMAGE lines: ~30-50 words. VIDEO lines: ~15-25 words, movement only, no style suffix.\n"+
-"- At least 50% of cenas must have a (v) or (iv) line.\n\n"+
+"FLOW FORMAT — CRITICAL (this EXACT syntax is required, or the tool cannot match the references to the scenes):\n"+
+"- One LINE = one scene. The prompt text is written BARE right after the type marker. NEVER wrap the prompt in square brackets.\n"+
+"- Square brackets [ ] are RESERVED, EXCLUSIVELY, for references — nothing else may ever go inside brackets:\n"+
+"    [Roxy] [Valerie] [Jade] [Nikki]  → the tool swaps in the saved portrait\n"+
+"    [Cena N]                          → reuse the already-chosen image of scene N\n"+
+"  (Wrapping the whole prompt like [image: ... [Roxy] ...] BREAKS reference detection — never do it.)\n"+
+"- Type marker comes right after {Cena N}:\n"+
+"    (i)  = image only\n"+
+"    (v)  = video only (it animates that same scene's image)\n"+
+"    (iv) = image and video sharing the SAME text\n"+
+"- When the image text differs from the video text (the ideal) → TWO lines with the SAME {Cena N}: one (i) and one (v). Shape:\n"+
+"    {Cena 4} (i) medium shot of [Roxy] gripping the chrome mic stand, single amber beam, deep black stage, <STYLE SUFFIX>\n"+
+"    {Cena 4} (v) the camera slowly pushes in as [Roxy] lifts her head and stage fog drifts past (8s)\n"+
+"- {Cena N} fixes the number; the next scene auto-increments.\n"+
+"- References carry ACTION / POSE only — never re-describe appearance (the saved portrait already holds it). Max 3 refs per line.\n"+
+"- IMAGE lines: ~25-40 words, ending with the STYLE SUFFIX appended bare (no brackets). VIDEO lines: ~15-25 words, movement only, no style suffix, and may end with a duration (6s) or (8s) — max 8s.\n"+
+"- At least 50% of scenes must have a (v) or (iv) line. Every scene that has video needs the image of that same scene.\n"+
+"- NO voice narration (the clip's audio is the song) — never use |voice|. Do not write model or resolution in the prompt; only the (Ns) duration is allowed.\n\n"+
 "═══ BAND MYTHOLOGY — THE CREATIVE CORE ═══\n"+
 "These are the themes that make The Ladyhawkes authorial. Use them to drive every scene choice:\n\n"+
 "FREEDOM COSTS: every choice is a renunciation — you cannot have everything. Freedom equals solitude. The hawk flies alone.\n\n"+
@@ -620,7 +628,7 @@ var GENERATORS = [
 "Start directly with {Cena 1}. No preamble, no notes, no Markdown. Only the formatted scene lines.",
     user:function(f){
       return "Song title: "+f.title+"\nTrack type: "+f.trackType+" ("+f.mood+")\nTheme: "+f.theme+
-        "\n\nSTYLE SUFFIX — append verbatim to ALL image and elements scenes:\n"+f.sceneSuffix+
+        "\n\nSTYLE SUFFIX — append verbatim and BARE (no brackets) at the END of every image line (i and iv); do NOT put it on video (v) lines:\n"+f.sceneSuffix+
         "\n\nNEGATIVE FILTER (never generate any of these): "+f.negativePrompt+
         "\n\nLYRICS (use as timing guide for scene order — one scene per section):\n"+(f.lyrics||'(no lyrics)');
     }
