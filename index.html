@@ -232,7 +232,9 @@ footer{margin-top:32px;padding-top:16px;border-top:1px solid var(--edge);text-al
 /* ============================================================
    The Ladyhawkes — Content Factory
    ============================================================ */
-var MODEL      = 'claude-sonnet-4-6';
+var MODEL        = 'claude-sonnet-4-6';   // padrão (título, estilo, YouTube, Flow, tradução, revisão)
+var MODEL_LYRICS = 'claude-opus-4-8';     // só a LETRA e a auto-correção — mais qualidade poética
+var MAX_TOKENS   = 8192;                   // teto de saída (era 4096; evita cortar letras/descrições longas)
 var API_URL    = 'https://api.anthropic.com/v1/messages';
 var LS_KEY     = 'lhk_api_key';
 var LS_ARCHIVE = 'lhk_archive';
@@ -370,7 +372,8 @@ var GENERATORS = [
     user:function(f){ return "Track type: "+f.trackType+"\nTheme: "+f.theme; }
   },
   {
-    id:'lyrics', label:'SONG LYRICS', sub:'Suno · Lyrics field · com metatags',
+    id:'lyrics', label:'SONG LYRICS', sub:'Suno · Lyrics field · com metatags · Opus',
+    model:MODEL_LYRICS, maxTokens:8192,
     clean:function(t){ var i=t.indexOf('['); return (i>0)?t.slice(i).replace(/^\s+/,''):t; },
     system:
 "You write the SUNO LYRICS FIELD for a song by The Ladyhawkes — a fictional 1980s all-female melodic hard rock / AOR band. This text is pasted DIRECTLY into Suno's Custom Lyrics box.\n\n"+
@@ -666,11 +669,17 @@ function buildDepSnapshot(form,deps){
 }
 
 /* ---------- API ---------- */
-function callAnthropic(apiKey,system,user){
+function callAnthropic(apiKey,system,user,opts){
+  opts = opts || {};
+  var model = opts.model || MODEL;
+  var maxTokens = opts.maxTokens || MAX_TOKENS;
+  var body = { model:model, max_tokens:maxTokens, system:system, messages:[{role:'user',content:user}] };
+  // Opus 4.7/4.8 e Fable removeram os parâmetros de amostragem — enviar temperature retorna HTTP 400.
+  if(!/^claude-(opus-4-(7|8)|fable)/.test(model)) body.temperature = 1;
   return fetch(API_URL,{
     method:'POST',
     headers:{'content-type':'application/json','x-api-key':apiKey,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
-    body:JSON.stringify({ model:MODEL, max_tokens:4096, temperature:1, system:system, messages:[{role:'user',content:user}] })
+    body:JSON.stringify(body)
   }).then(function(res){
     if(!res.ok) return res.text().then(function(t){
       var detail=t; try{ var j=JSON.parse(t); detail=(j.error&&j.error.message)||t; }catch(e){}
@@ -713,7 +722,7 @@ function runOne(gen,snapshot){
   extra.push(GUARDRAILS);
   var sys=gen.system+"\n\n"+extra.join("\n\n");
 
-  return callAnthropic(apiKey,sys,gen.user(snapshot)).then(function(raw){
+  return callAnthropic(apiKey,sys,gen.user(snapshot),{ model:gen.model, maxTokens:gen.maxTokens }).then(function(raw){
     var text=raw;
     if(typeof gen.clean==='function') text=gen.clean(text);
     if(contentSafetyFlag(text)){
@@ -783,7 +792,7 @@ function fixLyrics(){
   state.outputs['lyrics']={ status:'loading',text:'',error:'' };
   renderCard('lyrics'); renderCard('lyricsReview'); setActiveTab('suno');
   var user="LYRICS:\n"+original+"\n\nREVIEW REPORT:\n"+rev.text;
-  callAnthropic(apiKey, FIXSYS+"\n\n"+GUARDRAILS, user).then(function(raw){
+  callAnthropic(apiKey, FIXSYS+"\n\n"+GUARDRAILS, user, { model:MODEL_LYRICS, maxTokens:8192 }).then(function(raw){
     var text=(typeof lyricsGen.clean==='function')?lyricsGen.clean(raw):raw;
     if(!text || contentSafetyFlag(text)){
       state.outputs['lyrics']={ status:'done',text:original,error:'' };
@@ -1021,7 +1030,7 @@ function applyTheme(t){
 
 /* ---------- init ---------- */
 function init(){
-  $('modelLabel').textContent=MODEL;
+  $('modelLabel').textContent=MODEL+' · LETRA: '+MODEL_LYRICS;
   loadBandConfig();
   loadTrackConfig();
 
