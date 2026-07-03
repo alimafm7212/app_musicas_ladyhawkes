@@ -1,0 +1,61 @@
+{
+  "track_types": [
+    {
+      "id": "power_ballad",
+      "label": "Power Ballad",
+      "description": "Slow, emotional, dramatic. Impossible love, longing, separation.",
+      "bpm_range": "60–80 BPM",
+      "mood": "melancholic, cinematic, yearning, intimate",
+      "lyric_themes": [
+        "impossible love between night and day",
+        "the curse that keeps them apart",
+        "watching from a distance, never touching",
+        "transformation at dusk — hawk becoming woman, wolf becoming man",
+        "longing across time, across seasons",
+        "the pain of almost",
+        "love that survives the dark"
+      ],
+      "suno_style": "80s melodic hard rock power ballad, AOR, slow emotional tempo 65 BPM, powerful soaring female lead vocals, intimate whispered verses building to belted emotional chorus, reverb-drenched clean electric guitar arpeggios, sustain-heavy lead guitar solo, warm piano melody underpinning the verses, lush orchestral string arrangements, anthemic layered backing vocals on chorus, vintage gated snare reverb, analog studio warmth, 1985 production style, photorealistic studio atmosphere",
+      "scene_suffix": "1980s melodic hard rock aesthetics, cinematic stage lighting, deep purple and cyan neon rim lighting, volumetric stage fog, moody low-key atmosphere, high-fashion editorial photography, photorealistic, high detail, sharp focus, no text, no watermark",
+      "negative_prompt": "nudity, naked, bikini, lingerie, underwear, vulgar, suggestive exposure, pornographic, bad anatomy, distorted fingers, extra hands, missing limbs, deformed musical instruments, text, watermark"
+    },
+    {
+      "id": "arena_anthem",
+      "label": "Arena Anthem",
+      "description": "Fast, powerful, electrifying. Defiance, freedom, breaking the curse.",
+      "bpm_range": "130–160 BPM",
+      "mood": "triumphant, fierce, explosive, euphoric",
+      "lyric_themes": [
+        "defying the curse, refusing to surrender",
+        "the night belongs to them — power, speed, freedom",
+        "the hawk soaring above the fire",
+        "love that fights back against fate",
+        "rising from darkness into light",
+        "the roar of the crowd, the rush of adrenaline",
+        "unstoppable force of will"
+      ],
+      "suno_style": "80s melodic hard rock arena anthem, AOR, driving upbeat tempo 145 BPM, powerfully belted female lead vocals, massive anthemic chorus with layered gang vocals, heavy chunky down-tuned guitar riffs with crunchy palm muting, soaring melodic lead guitar hooks, thunderous double bass drum kicks, driving snare, pyrotechnic arena energy, stadium crowd atmosphere, massive wall-of-sound production, 1986 production style, live arena concert atmosphere",
+      "scene_suffix": "1980s melodic hard rock aesthetics, cinematic arena stage lighting, warm amber glow, intense pyrotechnics, sparks and fire background, high-fashion editorial photography, photorealistic, high detail, sharp focus, no text, no watermark",
+      "negative_prompt": "nudity, naked, bikini, lingerie, underwear, vulgar, suggestive exposure, pornographic, bad anatomy, distorted fingers, extra hands, missing limbs, deformed musical instruments, text, watermark"
+    },
+    {
+      "id": "sleaze_rock",
+      "label": "Sleaze Rock",
+      "description": "Mid-tempo, raw, attitude-driven. Night roads, danger, desire.",
+      "bpm_range": "100–125 BPM",
+      "mood": "rebellious, dangerous, seductive, raw",
+      "lyric_themes": [
+        "riding through the night with no destination",
+        "the wolf hunting under a blood moon",
+        "forbidden desire, magnetic pull",
+        "don't care about the rules — only the road matters",
+        "neon lights and the smell of leather",
+        "the hawk watches, the wolf hunts, the night is theirs",
+        "danger that feels like home"
+      ],
+      "suno_style": "80s sleaze rock, glam metal, mid-tempo groove 115 BPM, attitude-driven female vocals with gritty rasp on verses and powerful punch on chorus, dirty overdriven rhythm guitar with bluesy swagger, whammy bar lead guitar licks, deep punchy bass groove, cracking snare drum, raw analog production with slight tape saturation, rebellious street energy, 1987 production style, underground club atmosphere",
+      "scene_suffix": "1980s sleaze rock aesthetics, cinematic street-level lighting, cold blue and red neon glow, gritty urban atmosphere, leather and chrome details, high-fashion editorial photography, photorealistic, high detail, sharp focus, no text, no watermark",
+      "negative_prompt": "nudity, naked, bikini, lingerie, underwear, vulgar, suggestive exposure, pornographic, bad anatomy, distorted fingers, extra hands, missing limbs, deformed musical instruments, text, watermark"
+    }
+  ]
+}

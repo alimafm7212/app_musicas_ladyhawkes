@@ -1,0 +1,18 @@
+# Windows
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Editores
+.vscode/
+.idea/
+*.swp
+
+# Sistema / logs
+*.log
+
+# Nunca versionar chaves de API (a chave vive no localStorage, mas por precaução)
+*.key
+.env
+.env.*
+secrets.*

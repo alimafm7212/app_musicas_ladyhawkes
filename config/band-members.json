@@ -1,0 +1,57 @@
+{
+  "band_name": "The Ladyhawkes",
+  "origin": "Fictional 1980s All-Female Melodic Hard Rock / AOR Band",
+  "inspiration": "Inspired by the mysticism, romance, and dark aesthetics of the 1985 film Ladyhawke",
+  "aesthetic_tags": ["melodic hard rock", "AOR", "arena rock", "80s rock", "female band", "power ballad"],
+  "visual_tone": "Sexy without being vulgar — power, rockstar attitude, iconic period costumes (leather, vinyl, velvet, studs) and dramatic arena lighting",
+  "members": [
+    {
+      "id": "roxy",
+      "name": "Roxy",
+      "role": "Lead Vocals",
+      "archetype": "The Magnetic Frontwoman — Night Sorceress / Arena Rock Diva",
+      "visual_description": "25-year-old white woman with striking prominent cheekbones and expressive lips. Intense penetrating blue eyes. Heavy smoky eyes makeup: black smudged eyeshadow, bold eyeliner, subtle silver shimmer at inner corners. Clear skin with neutral undertone. Very voluminous platinum blonde almost-white 1980s shag haircut with constant stage-wind movement effect. Structured black or dark purple velvet/brocade corset bodice. Cropped leather biker jacket with silver stud shoulder pads. Ultra-tight matte black leather pants. Short ankle boots with metal buckles. Vintage chrome microphone stand adorned with black and purple silk scarves. Thin leather choker with small silver hawk pendant.",
+      "flow_portrait": "Portrait of a 25-year-old white woman, intense blue eyes, heavy black smoky eyes eyeliner, very voluminous platinum blonde 1980s shag haircut, wearing a black leather jacket, neutral standing pose, solid dark gray background, soft studio lighting, photorealistic, sharp focus, front-facing, no text, no watermark",
+      "stage_behavior": "Direct challenging gaze at the camera. Theatrical dramatic poses — grips the chrome mic stand with both hands, tilts her body to express power ballad emotion, points at the crowd during climaxes. Radiates absolute command over the show.",
+      "lighting": "Warm amber spotlights, golden backlight, theatrical arena fog",
+      "suno_keywords": ["powerful female rock vocals", "arena rock diva delivery", "emotional belted choruses", "whispered intimate verses"],
+      "scene_keywords": ["vintage chrome mic stand", "silk scarves", "hawk pendant", "leather biker jacket", "platinum shag hair", "stage fog", "amber spotlight"]
+    },
+    {
+      "id": "valerie",
+      "name": "Valerie",
+      "role": "Lead Guitar & Backing Vocals",
+      "archetype": "The Elegant Virtuoso — Guitar Hero / Imperious Nobility",
+      "visual_description": "25-year-old white northern European woman with refined symmetric features, slightly defined jawline, focused almost feline gaze. Intense emerald green eyes. Elegant sharp cat eyeliner and classic dark matte red lipstick. Natural intense copper-red hair, very long, falling in voluminous waves to mid-back — no bangs, showcasing her haughty high-brow look. High-waisted black vinyl or latex pants. Asymmetric faux leather croptop or long-sleeve black transparent blouse over structured top. Wide leather wristbands on both wrists. Tall over-the-knee boots with thin imposing stiletto heel. Gibson Les Paul Custom black with gold hardware or Kramer Flying V. Wide leather guitar strap with embossed details.",
+      "flow_portrait": "Portrait of a 25-year-old white northern European woman, intense emerald green eyes, sharp eyeliner, dark red lipstick, long voluminous copper-red wavy hair down her back, wearing a black leather top, neutral standing pose, solid dark gray background, soft studio lighting, photorealistic, sharp focus, front-facing, no text, no watermark",
+      "stage_behavior": "Expression of trance and technical ecstasy during solos. Leans back during complex passages with copper-red hair flying against backlight, or raises the guitar neck toward the arena ceiling under a direct amber or gold beam of light. Elegant and aristocratic until the moment she starts playing.",
+      "lighting": "Amber and gold directional beam during solos, warm backlight making her hair glow",
+      "suno_keywords": ["melodic hard rock lead guitar", "80s AOR guitar solos", "lush chorus-drenched electric guitar", "arena rock guitar riffs"],
+      "scene_keywords": ["Gibson Les Paul", "Kramer Flying V", "copper-red hair flying", "guitar solo", "amber beam", "leather wristbands", "vinyl pants", "over-the-knee boots"]
+    },
+    {
+      "id": "jade",
+      "name": "Jade",
+      "role": "Bass & Groove",
+      "archetype": "The Weight and Mystery — Night Rebel / Sleaze Attitude",
+      "visual_description": "25-year-old latina woman with rich cinnamon skin tone. Expressive face with full lips and arched defined eyebrows. Dark mysterious brown eyes. Illuminated skin glow (stage-sweat finish), bronze and old-gold eyeshadow, dark nude lipstick. Deep black long perfectly straight heavy hair with a sharp straight fringe that hits exactly above her eyes. Black ripped jeans with stonewashed look, double stud-covered belts with dangling metal chains on hip sides. Vintage rock sleeveless t-shirt cut very deep at the sides revealing black lace underneath. Black cotton wristbands. Matte black Fender Precision Bass modified, positioned low at hip height. Wide thick leather choker without pendants.",
+      "flow_portrait": "Portrait of a 25-year-old latina woman, rich cinnamon skin tone, dark brown eyes, sharp cat-eye eyeliner, long heavy straight black hair with a sharp straight fringe above her eyes, wearing a vintage rock t-shirt, neutral standing pose, solid dark gray background, soft studio lighting, photorealistic, sharp focus, front-facing, no text, no watermark",
+      "stage_behavior": "Firm wide-legged stance, swaying body to the heavy bass rhythm. Rarely looks directly at the camera — tends to glance sideways from under the fringe with an enigmatic half-smile. Surrounded by cold-tone lighting (blue neon, cyan or purple) and low dry ice fog drifting at floor level.",
+      "lighting": "Cold tones — blue neon, cyan, deep purple. Low dry ice fog. Moody low-key atmosphere.",
+      "suno_keywords": ["prominent melodic bass guitar", "hip-position low-slung bass", "sleaze rock groove", "urban bass lines"],
+      "scene_keywords": ["straight black fringe", "hip-height bass", "cinnamon skin", "dry ice fog", "blue neon", "cyan rim light", "denim ripped jeans", "metal chains"]
+    },
+    {
+      "id": "nikki",
+      "name": "Nikki",
+      "role": "Drums & Rhythmic Impact",
+      "archetype": "The Wild Force — Rhythm Valkyrie / Untamed Energy",
+      "visual_description": "25-year-old east asian woman with angular features and expressive almond-shaped eyes. Wide fierce smile radiating the joy of rock energy. Graphic strong waterproof black eyeliner. Short choppy dark brown almost-black bob haircut (or high messy ponytail with hot pink or neon blue streaks that move when she plays). Black distressed sleeveless tank top or metallic/shiny fabric sports top. Essential black leather fingerless gloves. High-waisted black leather shorts, fishnet stockings with strategic tears, heavy boots for drum pedals. Monumental chrome drum kit with two large bass drums, surrounded by shiny cymbals reflecting stage light. Dark wood drumsticks she twirls between beats.",
+      "flow_portrait": "Portrait of a 25-year-old east asian woman, expressive almond-shaped eyes, graphic black eyeliner, short choppy dark brown bob haircut, wearing a distressed black tank top, neutral standing pose, solid dark gray background, soft studio lighting, photorealistic, sharp focus, front-facing, no text, no watermark",
+      "stage_behavior": "Pure dynamic movement. Captured at the peak of physical motion: arms raised ready to strike cymbals, stylized sweat drops flying with head movement, hair covering and uncovering her face as she drives the rhythm. Always positioned at the back on an elevated platform, lit by strong stroboscopic backlight creating a huge intimidating silhouette behind the band.",
+      "lighting": "Stroboscopic backlight from behind creating dramatic silhouette on elevated platform, white and blue strobe flashes",
+      "suno_keywords": ["thunderous double bass drum", "arena rock drums", "explosive energetic drumming", "80s hard rock drum production"],
+      "scene_keywords": ["chrome drum kit", "double bass drum", "elevated platform", "backlight silhouette", "fingerless gloves", "fishnet", "cymbal flash", "strobe light", "choppy bob"]
+    }
+  ]
+}
