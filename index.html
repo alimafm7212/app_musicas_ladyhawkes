@@ -373,7 +373,7 @@ var GENERATORS = [
   },
   {
     id:'lyrics', label:'SONG LYRICS', sub:'Suno · Lyrics field · com metatags · Opus',
-    model:MODEL_LYRICS, maxTokens:8192,
+    model:MODEL_LYRICS,
     clean:function(t){ var i=t.indexOf('['); return (i>0)?t.slice(i).replace(/^\s+/,''):t; },
     system:
 "You write the SUNO LYRICS FIELD for a song by The Ladyhawkes — a fictional 1980s all-female melodic hard rock / AOR band. This text is pasted DIRECTLY into Suno's Custom Lyrics box.\n\n"+
@@ -782,6 +782,7 @@ var FIXSYS =
 "LANGUAGE — ENGLISH ONLY. Output ONLY the corrected lyrics, starting immediately with [Intro]. No preamble, no notes, no explanation of the changes.";
 
 function fixLyrics(){
+  if(state.busy) return;
   var apiKey=$('apikey').value.trim();
   if(!apiKey){ alert('SEM CHAVE DE API — cole sua chave da Anthropic primeiro.'); return; }
   var lyr=state.outputs['lyrics'], rev=state.outputs['lyricsReview'];
@@ -789,24 +790,26 @@ function fixLyrics(){
   if(!rev||rev.status!=='done'||!rev.text){ alert('Gere a LYRICS REVIEW antes de corrigir automaticamente.'); return; }
   var lyricsGen=genById('lyrics');
   var original=lyr.text;
+  state.busy=true; setBusy(true);
+  function release(){ state.busy=false; setBusy(false); }
   state.outputs['lyrics']={ status:'loading',text:'',error:'' };
   renderCard('lyrics'); renderCard('lyricsReview'); setActiveTab('suno');
   var user="LYRICS:\n"+original+"\n\nREVIEW REPORT:\n"+rev.text;
-  callAnthropic(apiKey, FIXSYS+"\n\n"+GUARDRAILS, user, { model:MODEL_LYRICS, maxTokens:8192 }).then(function(raw){
+  callAnthropic(apiKey, FIXSYS+"\n\n"+GUARDRAILS, user, { model:MODEL_LYRICS }).then(function(raw){
     var text=(typeof lyricsGen.clean==='function')?lyricsGen.clean(raw):raw;
     if(!text || contentSafetyFlag(text)){
       state.outputs['lyrics']={ status:'done',text:original,error:'' };
-      renderCard('lyrics'); renderCard('lyricsReview');
+      renderCard('lyrics'); renderCard('lyricsReview'); release();
       alert('Correção não aplicada (vazia ou bloqueada pelo filtro). Letra original mantida.'); return;
     }
     state.outputs['lyrics']={ status:'done',text:text,error:'' };
-    renderCard('lyrics'); updateExportState(); updateCurrentArchiveOutput('lyrics');
+    renderCard('lyrics'); updateCurrentArchiveOutput('lyrics');
     return runOne(genById('lyricsReview'),buildDepSnapshot(getForm(),['lyrics'])).then(function(){
-      updateExportState(); updateCurrentArchiveOutput('lyricsReview');
+      release(); updateExportState(); updateCurrentArchiveOutput('lyricsReview');
     });
   }).catch(function(err){
     state.outputs['lyrics']={ status:'done',text:original,error:'' };
-    renderCard('lyrics'); renderCard('lyricsReview');
+    renderCard('lyrics'); renderCard('lyricsReview'); release();
     alert('Falha ao corrigir a letra: '+((err&&err.message)||err)+'\nLetra original mantida.');
   });
 }
