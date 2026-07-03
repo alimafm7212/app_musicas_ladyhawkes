@@ -232,7 +232,7 @@ footer{margin-top:32px;padding-top:16px;border-top:1px solid var(--edge);text-al
 /* ============================================================
    The Ladyhawkes — Content Factory
    ============================================================ */
-var MODEL        = 'claude-sonnet-4-6';   // padrão (título, estilo, YouTube, Flow, tradução, revisão)
+var MODEL        = 'claude-sonnet-5';     // padrão (título, estilo, YouTube, Flow, tradução, revisão)
 var MODEL_LYRICS = 'claude-opus-4-8';     // só a LETRA e a auto-correção — mais qualidade poética
 var MAX_TOKENS   = 8192;                   // teto de saída (era 4096; evita cortar letras/descrições longas)
 var API_URL    = 'https://api.anthropic.com/v1/messages';
@@ -677,8 +677,11 @@ function callAnthropic(apiKey,system,user,opts){
   var model = opts.model || MODEL;
   var maxTokens = opts.maxTokens || MAX_TOKENS;
   var body = { model:model, max_tokens:maxTokens, system:system, messages:[{role:'user',content:user}] };
-  // Opus 4.7/4.8 e Fable removeram os parâmetros de amostragem — enviar temperature retorna HTTP 400.
-  if(!/^claude-(opus-4-(7|8)|fable)/.test(model)) body.temperature = 1;
+  // Sonnet 5, Opus 4.7/4.8 e Fable removeram os parâmetros de amostragem — enviar temperature retorna HTTP 400.
+  if(!/^claude-(opus-4-(7|8)|sonnet-5|fable)/.test(model)) body.temperature = 1;
+  // Sonnet 5 liga o "adaptive thinking" por padrão; desligamos para manter o comportamento anterior
+  // (Sonnet 4.6 sem thinking) e não gastar o teto MAX_TOKENS com raciocínio, o que truncaria letras/cenas longas.
+  if(/^claude-sonnet-5/.test(model)) body.thinking = { type:'disabled' };
   return fetch(API_URL,{
     method:'POST',
     headers:{'content-type':'application/json','x-api-key':apiKey,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},

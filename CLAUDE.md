@@ -34,7 +34,7 @@ então o app funciona mesmo se o fetch falhar. Ao mudar um JSON, atualize també
 - `TABS` / `TAB_OF` (~339): abas SUNO / LETRA PT / YOUTUBE / FLOW.
 - `generateAll` (~705): roda os geradores como **DAG** respeitando `dependsOn`.
 - `runOne` (~671): executa um gerador; injeta `GUARDRAILS` e (se `memberInject`) `BAND_REFS`.
-- `callAnthropic` (~641): fetch direto para a API (`claude-sonnet-4-6`, `max_tokens:4096`).
+- `callAnthropic` (~641): fetch direto para a API (`claude-sonnet-5`, `max_tokens:8192`).
 - `regenOne` (~730): regenera um card isolado.
 - Cards: `cardMarkup`/`buildCards`/`renderCard` (~802–853); ações por `data-action`
   ("regen"/"copy"/"retry").
